@@ -1,0 +1,29 @@
+---
+title: Site Not Indexing
+description: Fix issues when your site is not showing in search engines.
+---
+
+## Symptoms
+
+- Your site does not appear in Google search
+- "No results found" for your domain
+
+## Causes
+
+- Noindex tag on pages
+- Blocked robots.txt
+- Site recently launched
+
+## Solution
+
+<Steps>
+  <Step title="Check robots.txt">
+    ````bash
+    # Ensure you don't see: Disallow: /
+    curl https://yourdomain.com/robots.txt
+    ````
+  </Step>
+  <Step title="Remove noindex tags">
+    Search your HTML for `<meta name="robots" content="noindex">` and remove it.
+  </Step>
+</Steps>

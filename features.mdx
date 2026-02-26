@@ -1,0 +1,140 @@
+---
+title: Core Features
+description: Explore the main capabilities of the platform, including editing tools, collaboration features, and SEO-optimized publishing options.
+---
+
+## Overview
+
+seo provides a comprehensive set of tools designed for creating, managing, and optimizing documentation with a strong focus on search engine performance. You get powerful editing capabilities, robust collaboration features, and built-in SEO optimization to ensure your content ranks well and reaches your audience effectively. Whether you manage technical docs, guides, or knowledge bases, these core features streamline your workflow.
+
+<Callout kind="info">
+  Customize these features to match your specific SEO projects, such as on-page optimization guides or technical audits.
+</Callout>
+
+## Key Capabilities
+
+Discover the main features through these interactive cards. Each highlights a core aspect of the platform.
+
+<Columns cols={3}>
+  <Card title="Rich Text & Markdown Editing" icon="edit-3" href="#rich-editing">
+    Create content seamlessly with WYSIWYG or markdown modes.
+  </Card>
+  <Card title="Version Control" icon="git-branch" href="#version-control">
+    Track changes and revert to previous versions effortlessly.
+  </Card>
+  <Card title="Collaboration" icon="users" href="#collaboration">
+    Work with teams using real-time editing and permissions.
+  </Card>
+  <Card title="SEO Tools" icon="search" href="#seo-tools">
+    Optimize docs for search engines with meta tags and sitemaps.
+  </Card>
+  <Card title="Search & Indexing" icon="zoom-in" href="#search-indexing">
+    Enable fast, accurate search across your documentation.
+  </Card>
+</Columns>
+
+## Rich Text and Markdown Editing
+
+Switch between visual rich text editing and precise markdown control to suit your needs.
+
+<Tabs>
+  <Tab title="Rich Text" icon="edit">
+    Use the WYSIWYG editor for intuitive content creation. Add headings, lists, images, and embeds without coding.
+
+    ```html
+    <h2>Sample Heading</h2>
+    <p>Rich content with <strong>bold</strong> and <em>italics</em>.</p>
+    ```
+  </Tab>
+  <Tab title="Markdown" icon="code">
+    Write in standard markdown for version control compatibility.
+
+    ````markdown
+    ## Sample Heading
+
+    Rich content with **bold** and *italics*.
+    ````
+  </Tab>
+</Tabs>
+
+## Version Control and History
+
+Maintain a complete audit trail of your documentation changes.
+
+<Steps>
+  <Step title="View History" icon="clock">
+    Access the version history panel from any page editor.
+  </Step>
+  <Step title="Compare Changes" icon="git-compare">
+    Select two versions to see diffs highlighted side-by-side.
+  </Step>
+  <Step title="Restore Version" icon="refresh-cw">
+    Revert to any previous version with one click.
+  </Step>
+</Steps>
+
+<CodeGroup tabs="CLI,API">
+  ```bash
+  seo versions list --doc-id=123
+  seo versions restore --doc-id=123 --version=v1.2
+  ```
+  ```javascript
+  await seo.versions.list({ docId: '123' });
+  await seo.versions.restore({ docId: '123', version: 'v1.2' });
+  ```
+</CodeGroup>
+
+## Collaboration and Permissions
+
+Invite team members and control access levels to collaborate securely.
+
+| Role          | Can Edit | Can Publish | Can Manage Users |
+|---------------|----------|-------------|------------------|
+| Editor        | Yes      | No          | No               |
+| Publisher     | Yes      | Yes         | No               |
+| Admin         | Yes      | Yes         | Yes              |
+
+<Expandable title="Advanced Permissions" default-open="false">
+  Set granular permissions per document or space. Use the API for programmatic access:
+
+  <ParamField path="spaceId" param-type="string" required="true">
+    Unique space identifier.
+  </ParamField>
+
+  <ParamField header="Authorization" param-type="string" required="true">
+    `Bearer YOUR_TOKEN`
+  </ParamField>
+</Expandable>
+
+## SEO Tools for Documentation
+
+Built-in tools help you optimize every page for search engines.
+
+- Automatically generate meta titles, descriptions, and Open Graph tags.
+- Create XML sitemaps and robots.txt files.
+- Analyze content for keyword density and readability.
+
+<Callout kind="tip">
+  Integrate with `https://api.example.com/seo/analyze` for real-time optimization scores.
+</Callout>
+
+## Search and Indexing Features
+
+Provide instant search across your docs with full-text indexing.
+
+Enable custom search via the dashboard at `https://dashboard.example.com/search-config`. Features include:
+
+- Fuzzy matching for typos.
+- Faceted search by tags and categories.
+- Analytics on popular queries.
+
+```javascript
+// Client-side search example
+const results = await seo.search({
+  query: 'markdown editing',
+  filters: { category: 'features' }
+});
+console.log(results);
+```
+
+These features work together to make seo your go-to platform for high-performing documentation. Start by exploring the [quickstart](/quickstart) for hands-on setup.

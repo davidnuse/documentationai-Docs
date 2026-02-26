@@ -1,0 +1,148 @@
+---
+title: Quickstart Guide
+description: Set up your account and create your first documentation space in minutes to start organizing your project docs.
+---
+
+## Prerequisites
+
+<Callout kind="info" title="Before You Begin">
+Ensure you have:
+- A modern web browser (Chrome, Firefox, or Safari)
+- An email address for account verification
+- Optional: Existing Markdown files or a GitHub repository for importing content
+</Callout>
+
+## Create Your Account
+
+Follow these steps to sign up for seo.
+
+<Steps>
+  <Step title="Visit the Signup Page" icon="user-plus">
+    Go to `https://app.seo.com/signup` and enter your email, name, and a secure password.
+  </Step>
+  <Step title="Verify Your Email" icon="mail">
+    Check your inbox for a verification email from seo and click the confirmation link.
+  </Step>
+  <Step title="Complete Onboarding" icon="check-circle">
+    Answer a few quick questions about your project to personalize your dashboard.
+  </Step>
+</Steps>
+
+## Set Up Your First Documentation Space
+
+Once logged in, create a space for your SEO project docs.
+
+<Steps>
+  <Step title="Create a New Space" icon="plus">
+    Click **New Space** on the dashboard, enter a name like "SEO Project Docs", and select your brand color `#6A4EE9`.
+  </Step>
+  <Step title="Configure Settings" icon="settings">
+    Set visibility to "Private" or "Public", add a custom domain if needed, and enable SEO features.
+  </Step>
+  <Step title="Add Team Members" icon="users">
+    Invite collaborators via email with roles like Editor or Viewer.
+  </Step>
+</Steps>
+
+## Import Existing Content
+
+Bring in your current docs quickly. Choose your preferred method.
+
+<Tabs>
+  <Tab title="GitHub Repo" icon="github">
+    Connect your repo for automatic syncing.
+    
+    <Steps>
+      <Step title="Authorize GitHub">
+        Paste your repo URL like `https://github.com/yourusername/seo-docs`.
+      </Step>
+      <Step title="Select Branch">
+        Choose `main` and map files to pages.
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="Markdown Files" icon="file-text">
+    Upload or drag-and-drop `.mdx` files.
+    
+````markdown
+# Welcome to SEO Docs
+---
+title: Home
+description: Your SEO documentation hub.
+---
+
+## Overview
+Start optimizing here.
+````
+  </Tab>
+  <Tab title="API Import" icon="zap">
+    Use the API for bulk import.
+    
+    <CodeGroup tabs="cURL,JavaScript">
+````bash
+curl -X POST https://api.example.com/v1/spaces/{spaceId}/import \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -d '{"files": [{"path": "/docs/intro.mdx", "content": "# Intro"}]}'
+````
+````javascript
+const response = await fetch(`https://api.example.com/v1/spaces/${spaceId}/import`, {
+  method: 'POST',
+  headers: {
+    'Authorization': `Bearer ${YOUR_API_KEY}`,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    files: [{ path: '/docs/intro.mdx', content: '# Intro' }]
+  })
+});
+````
+    </CodeGroup>
+  </Tab>
+</Tabs>
+
+## Basic Navigation and Editing
+
+Get comfortable with the editor.
+
+<Columns cols={2}>
+  <Card title="Navigation" icon="compass">
+    Use the sidebar for pages, spaces, and search. Keyboard shortcuts: <kbd>Ctrl</kbd>+<kbd>K</kbd> for quick search.
+  </Card>
+  <Card title="Editing" icon="edit-3">
+    Edit in real-time Markdown/MDX. Preview changes with split view. Components like `<Callout>` enhance your docs.
+  </Card>
+</Columns>
+
+<Callout kind="tip">
+Pro tip: Use `Ctrl`+<kbd>S</kbd> to save drafts automatically.
+</Callout>
+
+## Publish Your First Page
+
+Make your docs live.
+
+<Steps>
+  <Step title="Review Changes" icon="eye">
+    Preview your page and fix any issues.
+  </Step>
+  <Step title="Publish" icon="globe">
+    Click **Publish** and select "Version 1.0". Share the live URL.
+  </Step>
+  <Step title="Customize SEO" icon="search">
+    Add meta title, description, and OpenGraph image in page settings.
+  </Step>
+</Steps>
+
+## Next Steps
+
+<Columns cols={3}>
+  <Card title="Introduction" icon="book-open" href="/introduction">
+    Learn core concepts and features.
+  </Card>
+  <Card title="Authentication" icon="lock" href="/authentication">
+    Secure your spaces with API keys.
+  </Card>
+  <Card title="Changelog" icon="git-branch" href="/changelog">
+    Stay updated with new releases.
+  </Card>
+</Columns>

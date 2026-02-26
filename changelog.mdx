@@ -1,0 +1,133 @@
+---
+title: Changelog
+description: Track the latest updates, new features, and improvements to the SEO documentation platform.
+---
+
+## Recent Updates
+
+<Callout kind="info">
+Stay up to date with the latest releases. Check the [GitHub releases page](https://github.com/your-org/seo-docs/releases) for full details and download assets.
+</Callout>
+
+The changelog tracks all major and minor releases of the SEO documentation platform. Releases follow semantic versioning (`vMAJOR.MINOR.PATCH`). Breaking changes appear with a major version bump.
+
+<Update label="2024-10-15" description="v1.2.0" tags={["feature", "improvement"]}>
+
+## New Features
+
+- Added support for AI-generated SEO content previews in the editor
+- Introduced real-time collaboration for documentation teams
+- New SEO audit tools integration with Google Search Console
+
+## Improvements
+
+- Enhanced search indexing for faster documentation lookup
+- Optimized page load times by `>30%`
+- Updated UI components with brand color `#6A4EE9`
+
+## Bug Fixes
+
+- Fixed rendering issues with Mermaid diagrams in dark mode
+- Resolved authentication token refresh loops
+
+</Update>
+
+<Update label="2024-09-20" description="v1.1.0" tags={["feature", "bugfix"]}>
+
+## New Features
+
+- Multi-language support for documentation (English, Swedish, French)
+- Embeddable SEO checklists for client reports
+- Customizable templates for SEO guides and audits
+
+## Bug Fixes
+
+- Corrected API rate limiting errors on high-traffic docs
+- Patched cross-site scripting vulnerability in user inputs
+
+## Improvements
+
+- Better mobile responsiveness for SEO tool dashboards
+
+</Update>
+
+<Update label="2024-08-10" description="v1.0.0" tags={["breaking", "feature"]}>
+
+## Initial Release
+
+- Core documentation management with SEO optimization tools
+- Built-in support for schema markup and meta tag generators
+- Integration with popular CMS like WordPress and headless setups
+
+## Breaking Changes
+
+- Initial setup requires new config format: migrate using the provided script
+
+</Update>
+
+## Upcoming Roadmap
+
+<Columns cols={3}>
+  <Card title="Q4 2024" icon="zap" href="#roadmap-q4">
+    Advanced analytics and performance tracking.
+  </Card>
+  <Card title="Q1 2025" icon="trending-up" href="#roadmap-q1">
+    Full AI SEO assistant integration.
+  </Card>
+  <Card title="Q2 2025" icon="shield" href="#roadmap-q2">
+    Enterprise security features and SSO.
+  </Card>
+</Columns>
+
+<Expandable title="Detailed Roadmap" default-open="false">
+  View the full roadmap on our [project board](https://github.com/your-org/seo-docs/projects/1).
+</Expandable>
+
+## How to Stay Updated
+
+<Steps>
+  <Step title="Subscribe to Releases" icon="bell">
+    Watch the GitHub repository for notifications.
+  </Step>
+  <Step title="Check API Version" icon="code">
+    Query the version endpoint:
+    
+````javascript
+fetch('https://api.example.com/v1/version')
+  .then(res => res.json())
+  .then(data => console.log(data.version));
+````
+    
+  </Step>
+  <Step title="Upgrade" icon="upload">
+    Follow the migration guide in each release notes.
+  </Step>
+</Steps>
+
+<Callout kind="tip">
+Enable auto-updates in your dashboard at `https://dashboard.example.com/settings` to receive patches automatically.
+</Callout>
+
+## Migration Guide for Breaking Changes
+
+<Tabs>
+  <Tab title="v1.0.0 to v1.1.0" icon="arrow-right">
+    
+````bash
+# Update config format
+npm run migrate-config v1.0-to-v1.1
+````
+
+    Review changes in `config.migrate.json`.
+  </Tab>
+  <Tab title="v1.1.0 to v1.2.0" icon="settings">
+    
+````yaml
+# New config structure
+seo:
+  ai_preview: true
+  collaboration: enabled
+````
+
+  </Tab>
+</Tabs>

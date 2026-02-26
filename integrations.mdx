@@ -1,0 +1,184 @@
+---
+title: Integrations and Extensions
+description: Connect the platform with third-party tools to enhance your documentation workflow, including webhooks for automation.
+---
+
+## Overview
+
+Integrate seo with your favorite tools to streamline workflows, automate updates, and extend functionality. Use GitHub for version control, webhooks for real-time notifications, and APIs for custom extensions. These integrations help you manage documentation efficiently while connecting to SEO analysis tools, content management systems, and more.
+
+<Callout kind="tip">
+Start with GitHub integration for seamless version control, then add webhooks for automated deployments.
+</Callout>
+
+## Popular Integrations
+
+Discover ready-to-use connections with popular apps.
+
+<Columns cols={3}>
+  <Card title="GitHub" icon="github" href="https://github.com">
+    Sync repositories for automatic documentation updates.
+  </Card>
+  <Card title="Slack" icon="message-circle" href="https://slack.com">
+    Receive deployment notifications in your channels.
+  </Card>
+  <Card title="Zapier" icon="zap" href="https://zapier.com">
+    Automate workflows across 5000+ apps.
+  </Card>
+</Columns>
+
+## GitHub Version Control Integration
+
+Connect your seo documentation to GitHub for collaborative editing and automatic deployments.
+
+### Setup Steps
+
+<Steps>
+  <Step title="Create GitHub App" icon="settings">
+    In your GitHub account, navigate to Settings > Developer settings > GitHub Apps. Create a new app with permissions for repository contents and metadata.
+  </Step>
+  <Step title="Configure Webhook" icon="link">
+    Add your seo webhook URL: `https://api.example.com/v1/webhooks/github`. Set events to "Push" and "Pull Request".
+  </Step>
+  <Step title="Link Repository" icon="git-branch">
+    
+````bash
+curl -X POST https://api.example.com/v1/integrations/github \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -d '{"repo": "your-org/seo-docs", "webhook_secret": "your-secret"}'
+````
+
+  </Step>
+</Steps>
+
+## API Access for Custom Extensions
+
+Build custom integrations using the seo REST API. Authenticate with `YOUR_API_KEY`.
+
+<ParamField path="integrations" param-type="object" required="true">
+  Configuration object for third-party connections.
+</ParamField>
+
+<ParamField header="Authorization" param-type="string" required="true">
+  Bearer token: `Bearer YOUR_API_KEY`.
+</ParamField>
+
+Example: List active integrations.
+
+<Request tabs="cURL,JavaScript">
+  
+````bash
+curl -X GET https://api.example.com/v1/integrations \
+  -H "Authorization: Bearer YOUR_API_KEY"
+````
+
+  
+````javascript
+const response = await fetch('https://api.example.com/v1/integrations', {
+  headers: { 'Authorization': 'Bearer YOUR_API_KEY' }
+});
+const integrations = await response.json();
+console.log(integrations);
+````
+</Request>
+
+<Response tabs="200">
+  
+```json
+{
+  "integrations": [
+    {
+      "id": "gh_123",
+      "type": "github",
+      "enabled": true,
+      "repo": "your-org/seo-docs"
+    }
+  ]
+}
+```
+</Response>
+
+## Webhook Setup for Notifications
+
+Set up webhooks to receive events like page updates or deployments.
+
+<Tabs>
+  <Tab title="Deployment Event" icon="rocket">
+    
+```json
+{
+  "event": "deployment",
+  "site_id": "seo-docs-abc123",
+  "status": "success",
+  "url": "https://docs.example.com"
+}
+```
+
+    Verify signature with `X-Webhook-Signature`.
+  </Tab>
+  <Tab title="Page Update" icon="edit-3">
+    
+```json
+{
+  "event": "page.updated",
+  "page_id": "integrations",
+  "changes": ["content", "metadata"],
+  "timestamp": "2024-01-15T10:30:00Z"
+}
+```
+
+    Trigger SEO scans on content changes.
+  </Tab>
+</Tabs>
+
+### Verification Steps
+
+<Steps>
+  <Step title="Configure Endpoint">
+    Expose `https://your-webhook-url.com/seo` publicly.
+  </Step>
+  <Step title="Add to seo">
+    
+````javascript
+// In your seo dashboard or API
+POST /v1/webhooks {
+  "url": "https://your-webhook-url.com/seo",
+  "events": ["deployment", "page.updated"],
+  "secret": "your-webhook-secret"
+}
+````
+  </Step>
+</Steps>
+
+## Embedding External Content
+
+Embed tools like Google Analytics or SEO checkers directly in your docs.
+
+<Expandable title="Advanced Embedding Options" default-open="false">
+Use iframes for dashboards:
+
+```html
+<iframe src="https://analytics.google.com/report?project=seo" width="100%" height="400"></iframe>
+```
+
+Ensure CORS settings allow embedding from `https://docs.example.com`.
+</Expandable>
+
+<Callout kind="alert">
+Secure embeds by validating origins to prevent XSS risks.
+</Callout>
+
+## Best Practices
+
+- Rotate `YOUR_API_KEY` regularly.
+- Use webhooks for real-time syncs instead of polling.
+- Test integrations in staging first.
+
+<Columns cols={2}>
+  <Card title="Next: Authentication" icon="shield" href="/authentication">
+    Secure your API access.
+  </Card>
+  <Card title="API Reference" icon="code" href="/api-reference">
+    Full endpoint details.
+  </Card>
+</Columns>
